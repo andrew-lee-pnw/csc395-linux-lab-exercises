@@ -4,6 +4,7 @@
   tasks:
   - name: Ensure latest Ansible version
     ansible.builtin.package:
+      become: yes
       name:
       - ansible
       - git
