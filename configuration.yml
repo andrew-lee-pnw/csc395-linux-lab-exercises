@@ -4,5 +4,7 @@ hosts: ansible-labs-controller
 tasks:
 - name: Ensure latest Ansible version
   ansible.builtin.package:
-    name: ansible
+    name:
+    - ansible
+    - git
     state: latest
