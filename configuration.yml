@@ -3,8 +3,8 @@
   hosts: ansible-lab-controller
   tasks:
   - name: Ensure latest Ansible version
+    become: yes
     ansible.builtin.package:
-      become: yes
       name:
       - ansible
       - git
