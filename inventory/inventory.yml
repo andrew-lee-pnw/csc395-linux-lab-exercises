@@ -6,7 +6,7 @@ all:
     ansible-lab-controller:
       ansible-host: 10.1.1.4
   children:
-    ansible-lab_hosts:
+    ansible_lab_hosts:
       hosts:
         ansible-lab-host1:
           ansible_host: 10.1.2.4
