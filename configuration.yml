@@ -50,7 +50,7 @@
     ansible.builtin.service:
       name: dnsmasq
       enabled: yes
-      state: started
+      state: restarted
 
 
     
