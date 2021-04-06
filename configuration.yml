@@ -24,7 +24,7 @@
 - name: Configure DNS Server
   hosts: ansible-lab-host1
   tasks:
-    - name: Install dnsmasq
-      ansible.bulitin.package:
-        name: dnsmasq
-        state: latest
+  - name: Install dnsmasq
+    ansible.bulitin.package:
+      name: dnsmasq
+      state: latest
