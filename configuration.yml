@@ -26,11 +26,14 @@
   vars:
     ansible_become: true
   tasks:
-  - name: Disable exsisting DNS
-    ansible.bulitin.sevice:
-      name: system-resolved
-      state: stopped
   - name: Install dnsmasq
     ansible.bulitin.package:
       name: dnsmasq
       state: latest
+  - name: Disable exsisting DNS
+    ansible.bulitin.sevice:
+      name: system-resolved
+      state: stopped
+
+
+    
