@@ -39,7 +39,7 @@
     notify: Restart dnsmasq
   - name: Disable exsisting DNS
     ansible.builtin.service:
-      name: system-resolved
+      name: systemd-resolved
       state: stopped
   - name: Set dnsmasq configuration file
     ansible.builtin.copy:
