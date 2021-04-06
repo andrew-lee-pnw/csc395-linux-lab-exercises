@@ -27,12 +27,12 @@
     ansible_become: true
   tasks:
   - name: Install dnsmasq
-    ansible.bulitin.package:
+    ansible.builtin.package:
       name: dnsmasq
       state: latest
     notify: Restart dnsmasq
   - name: Set local hostname
-    ansible.bulitin.lineinfile:
+    ansible.builtin.lineinfile:
       path: /etc/hosts
       regexp: '^10\.1\.2\.4'
       line: '10.1.2.4 localhost {{ ansible_hostname }}'
