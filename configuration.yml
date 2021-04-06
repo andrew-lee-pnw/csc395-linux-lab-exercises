@@ -38,7 +38,7 @@
       line: '10.1.2.4 localhost {{ ansible_hostname }}'
     notify: Restart dnsmasq
   - name: Disable exsisting DNS
-    ansible.builtin.sevice:
+    ansible.builtin.service:
       name: system-resolved
       state: stopped
   - name: Set dnsmasq configuration file
