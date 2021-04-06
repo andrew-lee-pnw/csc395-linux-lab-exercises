@@ -49,6 +49,7 @@
       group: root
       mode: '0644'
     notify: Restrart dnsmasq
+    
   handlers:
   - name: Start dnsmasq
     ansible.builtin.service:
