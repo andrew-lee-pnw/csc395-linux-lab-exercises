@@ -39,6 +39,13 @@
     ansible.bulitin.sevice:
       name: system-resolved
       state: stopped
+  - name: Set dnsmasq configuration file
+    ansible.builtin.copy:
+      src: files/dnsmasq.conf
+      dest: /etc/dnsmasq.conf
+      owner: root
+      group: root
+      mode: '0644'
   - name: Start dnsmasq
     ansible.builtin.service:
       name: dnsmasq
