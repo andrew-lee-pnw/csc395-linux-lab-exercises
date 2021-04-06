@@ -30,11 +30,13 @@
     ansible.bulitin.package:
       name: dnsmasq
       state: latest
+    notify: Restrart dnsmasq
   - name: Set local hostname
     ansible.bulitin.lineinfile:
       path: /etc/hosts
       regexp: '^10\.1\.2\.4'
       line: '10.1.2.4 localhost {{ ansible_hostname }}'
+    notify: Restrart dnsmasq
   - name: Disable exsisting DNS
     ansible.bulitin.sevice:
       name: system-resolved
@@ -46,11 +48,11 @@
       owner: root
       group: root
       mode: '0644'
+    notify: Restrart dnsmasq
+  handlers:
   - name: Start dnsmasq
     ansible.builtin.service:
       name: dnsmasq
       enabled: yes
       state: restarted
-
-
     
