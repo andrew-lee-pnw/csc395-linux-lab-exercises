@@ -37,6 +37,24 @@
       regexp: '^10\.1\.2\.4'
       line: '10.1.2.4 localhost {{ ansible_hostname }}'
     notify: Restart dnsmasq
+  - name: Add Host 2
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.1\.2\.5'
+      line: '10.1.2.5 localhost ansible-lab-host2'
+    notify: Restart dnsmasq
+  - name: Add Host 3
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.1\.2\.6'
+      line: '10.1.2.6 localhost ansible-lab-host3'
+    notify: Restart dnsmasq
+  - Add Controller
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^10\.1\.1\.4'
+      line: '10.1.1.4 localhost ansible-lab-controller'
+    notify: Restart dnsmasq
   - name: Disable exsisting DNS
     ansible.builtin.service:
       name: systemd-resolved
