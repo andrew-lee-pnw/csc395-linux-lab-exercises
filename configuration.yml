@@ -49,7 +49,7 @@
       regexp: '^10\.1\.2\.6'
       line: '10.1.2.6 localhost ansible-lab-host3'
     notify: Restart dnsmasq
-  - Add Controller
+  - name: Add Controller
     ansible.builtin.lineinfile:
       path: /etc/hosts
       regexp: '^10\.1\.1\.4'
