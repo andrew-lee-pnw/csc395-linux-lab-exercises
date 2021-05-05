@@ -16,8 +16,8 @@
   - name:  Nginx Website
     become: true
     ansible.builtin.copy:
-      src: files/website.html
-      dest: /var/www/html/website.html
+      src: files/Website.html
+      dest: /var/www/html/Website.html
       owner: root
       group: root
       mode: '0644'
@@ -30,7 +30,7 @@
     openvpn_server_hostname: 168.62.11.23
   roles:
   - role: ansible-role-openvpn
-    clients: client1
+      clients: client1
 
 
 
