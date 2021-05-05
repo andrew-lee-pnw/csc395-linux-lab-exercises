@@ -30,7 +30,7 @@
     openvpn_server_hostname: 168.62.11.23
   roles:
   - role: ansible-role-openvpn
-    client: client1
+    clients: client1
 
 
 
