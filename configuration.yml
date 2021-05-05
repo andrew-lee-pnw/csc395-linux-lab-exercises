@@ -115,12 +115,12 @@
   become: true
   hosts: ansible-lab-host3
   tasks:
-    - name: Installing nginx
-      apt: name=nginx state=latest
-    - name: start nginx
-      service:
-          name: nginx
-          state: started
+  - name: Installing nginx
+    apt: name=nginx state=latest
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
 
 - name: Nginx Website 
   hosts: ansible-lab-host3
@@ -141,8 +141,8 @@
     ansible_become: True
     openvpn_server_hostname: 168.62.11.23
   roles:
-  - role: ansible-role-openvpn
-    clients: client1
+    - role: ansible-role-openvpn
+      clients: client1
 
 
 
