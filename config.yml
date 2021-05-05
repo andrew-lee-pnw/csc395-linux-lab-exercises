@@ -24,9 +24,9 @@
 
 - name: Install OpenVPN
   hosts: ansible-lab-controller
-  gather_facts: True
+  gather_facts: true
   vars:
-    ansible_become: True
+    ansible_become: true
     openvpn_server_hostname: 168.62.11.23
   roles:
   - role: ansible-role-openvpn
