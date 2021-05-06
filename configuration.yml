@@ -111,39 +111,6 @@
   roles:
   - bertvv.samba
 
-- name: Installing nginx
-  become: true
-  hosts: ansible-lab-host3
-  tasks:
-  - name: Installing nginx
-    apt: name=nginx state=latest
-  - name: start nginx
-    service:
-      name: nginx
-      state: started
-
-- name: Nginx Website 
-  hosts: ansible-lab-host3
-  tasks:
-  - name:  Nginx Website
-    become: true
-    ansible.builtin.copy:
-      src: files/website.html
-      dest: /var/www/html/website.html
-      owner: root
-      group: root
-      mode: '0644'
-
-- name: Install OpenVPN
-  hosts: ansible-lab-controller
-  gather_facts: True
-  vars:
-    ansible_become: True
-    openvpn_server_hostname: 168.62.11.23
-  roles:
-  - role: ansible-role-openvpn
-      clients: client1
-
 
 
 
