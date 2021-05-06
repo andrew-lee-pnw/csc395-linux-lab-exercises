@@ -1,12 +1,12 @@
 ---
-  - name: Configure Samba Server
+- name: Configure Samba Server
   hosts: ansible-lab-host2
   vars:
     ansible_become: true
   roles:
   - bertvv.samba
 
-  - name: Configure Samba
+- name: Configure Samba
     hosts: ansible-lab-host3
     vars:
       ansible_become: True
