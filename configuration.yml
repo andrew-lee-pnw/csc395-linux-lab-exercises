@@ -75,11 +75,18 @@
       enabled: yes
       state: restarted
     
-  - name: Configure Samba
-    hosts: ansible-lab-host3
-    vars:
-      ansible_become: True
-    tasks:
+- name: Configure Samba Server
+  hosts: ansible-lab-host2
+  vars:
+    ansible_become: true
+  roles:
+  - bertvv.samba
+
+- name: Configure Samba
+  hosts: ansible-lab-host3
+  vars:
+    ansible_become: True
+  tasks:
   - name: Install client deps
     package:
       name: cifs-utils
@@ -99,17 +106,11 @@
       opts: credentials=/home/{{ admin_un }}/.smbpasswd
       state: mounted
   - name: Set mount as writeable
-  file:
-    path: /mnt/smbshare
-    state: directory
-    mode: '0777'
+    file:
+      path: /mnt/smbshare
+      state: directory
+      mode: '0777'
 
-- name: Configure Samba Server
-  hosts: ansible-lab-host2
-  vars:
-    ansible_become: true
-  roles:
-  - bertvv.samba
 
 
 
