@@ -105,7 +105,7 @@
     mode: '0777'
 
 - name: Configure Samba Server
-  hosts: ansible_lab_host2
+  hosts: ansible-lab-host2
   vars:
     ansible_become: true
   roles:
