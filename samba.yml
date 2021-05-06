@@ -5,7 +5,7 @@
     ansible_become: true
   roles:
   - bertvv.samba
-  
+
   - name: Configure Samba
     hosts: ansible-lab-host3
     vars:
@@ -30,10 +30,10 @@
       opts: credentials=/home/{{ admin_un }}/.smbpasswd
       state: mounted
   - name: Set mount as writeable
-  file:
-    path: /mnt/smbshare
-    state: directory
-    mode: '0777'
+    file:
+      path: /mnt/smbshare
+      state: directory
+      mode: '0777'
 
 
 
