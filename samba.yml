@@ -14,6 +14,7 @@
       src: //10.1.2.5/testshare
       path: /mnt/smbshare
       fstype: cifs
+      state: mounted
   - name: Set mount as writeable
     file:
       path: /mnt/smbshare
