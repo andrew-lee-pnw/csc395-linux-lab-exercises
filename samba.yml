@@ -1,4 +1,11 @@
 ---
+  - name: Configure Samba Server
+  hosts: ansible-lab-host2
+  vars:
+    ansible_become: true
+  roles:
+  - bertvv.samba
+  
   - name: Configure Samba
     hosts: ansible-lab-host3
     vars:
@@ -28,12 +35,7 @@
     state: directory
     mode: '0777'
 
-- name: Configure Samba Server
-  hosts: ansible_lab_host2
-  vars:
-    ansible_become: true
-  roles:
-  - bertvv.samba
+
 
 
 
