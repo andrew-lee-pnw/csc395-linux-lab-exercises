@@ -1,36 +1,40 @@
 ---
-- name: Installing nginx
-  become: true
-  hosts: ansible-lab-host3
-  tasks:
-  - name: Installing nginx
-    apt: name=nginx state=latest
-  - name: start nginx
-    service:
-      name: nginx
-      state: started
+  - name: Configure Samba
+    hosts: ansible-lab-host3
+    vars:
+      ansible_become: True
+    tasks:
+  - name: Install client deps
+    package:
+      name: cifs-utils
+      state: latest
+  - name: create credential file
+    template:
+      src: ./files/.smbpasswd
+      dest: /home/{{ admin_un }}/.smbpasswd
+      owner: '{{ admin_un }}'
+      group: '{{ admin_un }}'
+      mode: '0600'
+  - name: Add share Mount
+    mount:
+      src: //10.1.2.5/testshare
+      path: /mnt/smbshare
+      fstype: cifs
+      opts: credentials=/home/{{ admin_un }}/.smbpasswd
+      state: mounted
+  - name: Set mount as writeable
+  file:
+    path: /mnt/smbshare
+    state: directory
+    mode: '0777'
 
-- name: Nginx Website 
-  hosts: ansible-lab-host3
-  tasks:
-  - name:  Nginx Website
-    become: true
-    ansible.builtin.copy:
-      src: files/Website.html
-      dest: /var/www/html/Website.html
-      owner: root
-      group: root
-      mode: '0644'
-
-- name: Install OpenVPN
-  hosts: ansible-lab-controller
-  gather_facts: true
+- name: Configure Samba Server
+  hosts: ansible_lab_host2
   vars:
     ansible_become: true
-    openvpn_server_hostname: 168.62.11.23
   roles:
-  - role: ansible-role-openvpn
-    clients: client1
+  - bertvv.samba
+
 
 
 
