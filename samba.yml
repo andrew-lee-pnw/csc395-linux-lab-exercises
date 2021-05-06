@@ -11,29 +11,29 @@
   vars:
     ansible_become: True
   tasks:
-- name: Install client deps
-  package:
-    name: cifs-utils
-    state: latest
-- name: create credential file
-  template:
-    src: ./files/.smbpasswd
-    dest: /home/{{ admin_un }}/.smbpasswd
-    owner: '{{ admin_un }}'
-    group: '{{ admin_un }}'
-    mode: '0600'
-- name: Add share Mount
-  mount:
-    src: //10.1.2.5/testshare
-    path: /mnt/smbshare
-    fstype: cifs
-    opts: credentials=/home/{{ admin_un }}/.smbpasswd
+  - name: Install client deps
+    package:
+      name: cifs-utils
+      state: latest
+  - name: create credential file
+    template:
+      src: ./files/.smbpasswd
+      dest: /home/{{ admin_un }}/.smbpasswd
+      owner: '{{ admin_un }}'
+      group: '{{ admin_un }}'
+      mode: '0600'
+  - name: Add share Mount
+    mount:
+      src: //10.1.2.5/testshare
+      path: /mnt/smbshare
+      fstype: cifs
+      opts: credentials=/home/{{ admin_un }}/.smbpasswd
     state: mounted
-- name: Set mount as writeable
-  file:
-    path: /mnt/smbshare
-    state: directory
-    mode: '0777'
+  - name: Set mount as writeable
+    file:
+      path: /mnt/smbshare
+      state: directory
+      mode: '0777'
 
 
 
