@@ -28,7 +28,6 @@
       path: /mnt/smbshare
       fstype: cifs
       opts: credentials=/home/{{ admin_un }}/.smbpasswd
-    state: mounted
   - name: Set mount as writeable
     file:
       path: /mnt/smbshare
