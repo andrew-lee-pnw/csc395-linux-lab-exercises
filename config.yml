@@ -17,7 +17,7 @@
     become: true
     ansible.builtin.copy:
       src: files/Website.html
-      dest: /var/www/html/Website.html
+      dest: /var/www/html/index.html
       owner: root
       group: root
       mode: '0644'
